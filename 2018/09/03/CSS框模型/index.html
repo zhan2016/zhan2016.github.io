@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="title: CSS学习二—CSS框模型  CSS框模型[TOC] 概述CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式. 框模型图示:  元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素. 注意:定义的背景声明将被应用于边框以内的区域，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/CSS框模型/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: CSS学习二—CSS框模型  CSS框模型[TOC] 概述CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式. 框模型图示:  元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素. 注意:定义的背景声明将被应用于边框以内的区域，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="f:/mydesktop/ct_boxmodel.gif">
+<meta property="og:image" content="f:/mydesktop/ct_css_boxmodel_example.gif">
+<meta property="og:updated_time" content="2018-09-04T08:16:37.337Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: CSS学习二—CSS框模型  CSS框模型[TOC] 概述CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式. 框模型图示:  元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素. 注意:定义的背景声明将被应用于边框以内的区域，">
+<meta name="twitter:image" content="f:/mydesktop/ct_boxmodel.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/03/CSS框模型/"/>
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/CSS框模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-03T09:37:30+08:00">
+                2018-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: CSS学习二—CSS框模型</p>
+<hr>
+<h1 id="CSS框模型"><a href="#CSS框模型" class="headerlink" title="CSS框模型"></a>CSS框模型</h1><p>[TOC]</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式.</p>
+<p>框模型图示:</p>
+<p><img src="F:\mydesktop\ct_boxmodel.gif" alt="ct_boxmodel"></p>
+<p>元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素.</p>
+<p><em>注意</em>:定义的背景声明将被应用于边框以内的区域，即内边距和内容组成的区域.</p>
+<p>内边距、边框和外边距都是可选的，默认值是零.</p>
+<p>在CSS中，<strong>width和height指的是内容区域的宽度和高度</strong>.  增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸.</p>
+<p>假设框的每个边上有是个元素的外边距和5个元素的内边距. 如果希望这个元素框达到100个像素，就需要将内容的宽度设置为70像素，图示如下:</p>
+<p><img src="F:\mydesktop\ct_css_boxmodel_example.gif" alt="ct_css_boxmodel_example"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em>内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边.</p>
+<p><em>注意</em>:外边距可以是负值，而且很多情况下都要使用负值的外边距.</p>
+<h2 id="CSS内边距"><a href="#CSS内边距" class="headerlink" title="CSS内边距"></a>CSS内边距</h2><ul>
+<li><p>元素的内边距在边框和内容区之间。控制该区最简单属性就是padding属性.</p>
+</li>
+<li><p>CSS padding属性定义元素边框与元素内容之间的空白区域.</p>
+</li>
+<li>CSS padding属性定义元素的内边距.padding 属性接受长度值或百分比，但不允许使用负值.</li>
+</ul>
+<p><strong>padding的几种设置形式:</strong></p>
+<ul>
+<li>统一像素设置:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">padding</span>: <span class="number">10px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按照上、右、下、左的顺序设置各边的内边距，各边均可使用不同的单位或百分比值:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;padding: 10px 0.25em 2ex 20%;&#125; tips:1em = 16px</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用四个单独的属性，分别设置上、右、下、左内边距:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">0.25em</span>;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="number">2ex</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">20%</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>内边距的百分比数值:</strong></p>
+<p>可以为元素的内边距设置百分数值.百分数值是相对于其父元素的width计算的, 这一点与外边距一样.所以，如果父元素的width改变，他们也会改变.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">padding</span>: <span class="number">10%</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em>上下内边距与左右内边距一致; 即上下内边距的百分数会相对于父元素宽度，而不是相对于高度.</p>
+<h2 id="CSS边框"><a href="#CSS边框" class="headerlink" title="CSS边框"></a>CSS边框</h2><ul>
+<li><p>元素的边框(boder)是围绕元素内容和内边距的一条或多条线.</p>
+</li>
+<li><p>CSS border属性允许你规定元素边框的样式、宽度和颜色.</p>
+</li>
+</ul>
+<h4 id="边框与背景"><a href="#边框与背景" class="headerlink" title="边框与背景"></a>边框与背景</h4><p>CSS规范指出，边框绘制在”元素的背景上”.这很重要, 因为有些边框是”间断的”(例如点线边框和虚线框),元素的背景应该出现在边框的可见部分之间.</p>
+<h4 id="边框样式"><a href="#边框样式" class="headerlink" title="边框样式"></a>边框样式</h4><p>为一个边框定义多个样式，例如:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.aside</span> &#123;<span class="attribute">border-style</span>: solid dotted dashed double;&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这条规则为类名为 aside 的段落定义了四种边框样式：实线上边框、点线右边框、虚线下边框和一个双线左边框。</p>
+<p>我们又看到了这里的值采用了 top-right-bottom-left 的顺序，讨论用多个值设置不同内边距时也见过这个顺序。</p>
+<h5 id="定义单边样式"><a href="#定义单边样式" class="headerlink" title="定义单边样式"></a>定义单边样式</h5><p>为某一个边设置边框样式,而不是设置所有4个边的边框样式,可以使用下面的单边框样式属性:</p>
+<ul>
+<li>border-top-style</li>
+<li>border-right-style</li>
+<li>border-bottom-style</li>
+<li>border-left-style</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: solid; <span class="attribute">border-left-style</span>: none;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="边框的宽度"><a href="#边框的宽度" class="headerlink" title="边框的宽度"></a>边框的宽度</h4><p>通过border-width属性为边框指定宽度.</p>
+<p>为边框指定宽度有两种方法:</p>
+<ul>
+<li><p>直接使用长度单位指定: 2px或0.1em;</p>
+</li>
+<li><p>使用关键字 thin、medium(默认值)和thick.</p>
+</li>
+</ul>
+<p><strong>定义单边宽度</strong></p>
+<ul>
+<li><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: solid; <span class="attribute">border-width</span>: <span class="number">15px</span> <span class="number">5px</span> <span class="number">15px</span> <span class="number">5px</span>;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-top-width</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-right-width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border-bottom-width</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-left-width</span>: <span class="number">5px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>没有边框</strong></p>
+<p>默认情况下border-style是none，也就是没有边框，如下的定义，将不会显示边框:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: none; <span class="attribute">border-width</span>: <span class="number">50px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果border-style设置为none，即边框根本不存在，那么边框就不可能有宽度，因此边框宽度自动设置为0，而不论您原先定义的是什么。</p>
+<p><strong>由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none. 因此，如果您希望边框出现，就必须声明一个边框样式.</strong></p>
+<h4 id="边框的颜色"><a href="#边框的颜色" class="headerlink" title="边框的颜色"></a>边框的颜色</h4><p>设置边框颜色非常简单. CSS使用一个简单的border-color属性, 它一次可以接受最多四个颜色值.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-color</span>: blue <span class="built_in">rgb</span>(25%,35%,45%) <span class="number">#909090</span> red;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="透明边框"><a href="#透明边框" class="headerlink" title="透明边框"></a>透明边框</h4><p>有些时候希望创建一个不可见的边框.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: transparent;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">border-color</span>: gray;&#125;</span><br></pre></td></tr></table></figure>
+<p>这种透明边框相当于内边距，因为元素的背景会延伸到边框区域（如果有可见背景的话）.</p>
+<h3 id="CSS外边距"><a href="#CSS外边距" class="headerlink" title="CSS外边距"></a>CSS外边距</h3><p> 设置外边距的最简单的方法就是使用margin属性</p>
+<p>margin属性接受任何长度单位, 可以是像素、英寸、毫米或em.</p>
+<p><strong>外边距的合并问题</strong></p>
+<p>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距. 合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者.</p>
+<p><em>注意:</em>只有普通文档流中块框的垂直外边距才会发生外边距合并. 行内框、浮动框或绝对定位之间的外边距不会合并.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/30/CSS语法学习 一/" rel="next" title="CSS语法学习一">
+                <i class="fa fa-chevron-left"></i> CSS语法学习一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS框模型"><span class="nav-number">1.</span> <span class="nav-text">CSS框模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS内边距"><span class="nav-number">1.2.</span> <span class="nav-text">CSS内边距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS边框"><span class="nav-number">1.3.</span> <span class="nav-text">CSS边框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#边框与背景"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">边框与背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边框样式"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">边框样式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义单边样式"><span class="nav-number">1.3.0.2.1.</span> <span class="nav-text">定义单边样式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边框的宽度"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">边框的宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边框的颜色"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">边框的颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透明边框"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">透明边框</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS外边距"><span class="nav-number">1.3.1.</span> <span class="nav-text">CSS外边距</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

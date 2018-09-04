@@ -260,6 +260,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/CSS框模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/03/CSS框模型/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-03T09:37:30+08:00">
+                2018-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: CSS学习二—CSS框模型</p>
+<hr>
+<h1 id="CSS框模型"><a href="#CSS框模型" class="headerlink" title="CSS框模型"></a>CSS框模型</h1><p>[TOC]</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式.</p>
+<p>框模型图示:</p>
+<p><img src="F:\mydesktop\ct_boxmodel.gif" alt="ct_boxmodel"></p>
+<p>元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素.</p>
+<p><em>注意</em>:定义的背景声明将被应用于边框以内的区域，即内边距和内容组成的区域.</p>
+<p>内边距、边框和外边距都是可选的，默认值是零.</p>
+<p>在CSS中，<strong>width和height指的是内容区域的宽度和高度</strong>.  增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸.</p>
+<p>假设框的每个边上有是个元素的外边距和5个元素的内边距. 如果希望这个元素框达到100个像素，就需要将内容的宽度设置为70像素，图示如下:</p>
+<p><img src="F:\mydesktop\ct_css_boxmodel_example.gif" alt="ct_css_boxmodel_example"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em>内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边.</p>
+<p><em>注意</em>:外边距可以是负值，而且很多情况下都要使用负值的外边距.</p>
+<h2 id="CSS内边距"><a href="#CSS内边距" class="headerlink" title="CSS内边距"></a>CSS内边距</h2><ul>
+<li><p>元素的内边距在边框和内容区之间。控制该区最简单属性就是padding属性.</p>
+</li>
+<li><p>CSS padding属性定义元素边框与元素内容之间的空白区域.</p>
+</li>
+<li>CSS padding属性定义元素的内边距.padding 属性接受长度值或百分比，但不允许使用负值.</li>
+</ul>
+<p><strong>padding的几种设置形式:</strong></p>
+<ul>
+<li>统一像素设置:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">padding</span>: <span class="number">10px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按照上、右、下、左的顺序设置各边的内边距，各边均可使用不同的单位或百分比值:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;padding: 10px 0.25em 2ex 20%;&#125; tips:1em = 16px</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用四个单独的属性，分别设置上、右、下、左内边距:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">0.25em</span>;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="number">2ex</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">20%</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>内边距的百分比数值:</strong></p>
+<p>可以为元素的内边距设置百分数值.百分数值是相对于其父元素的width计算的, 这一点与外边距一样.所以，如果父元素的width改变，他们也会改变.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">padding</span>: <span class="number">10%</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em>上下内边距与左右内边距一致; 即上下内边距的百分数会相对于父元素宽度，而不是相对于高度.</p>
+<h2 id="CSS边框"><a href="#CSS边框" class="headerlink" title="CSS边框"></a>CSS边框</h2><ul>
+<li><p>元素的边框(boder)是围绕元素内容和内边距的一条或多条线.</p>
+</li>
+<li><p>CSS border属性允许你规定元素边框的样式、宽度和颜色.</p>
+</li>
+</ul>
+<h4 id="边框与背景"><a href="#边框与背景" class="headerlink" title="边框与背景"></a>边框与背景</h4><p>CSS规范指出，边框绘制在”元素的背景上”.这很重要, 因为有些边框是”间断的”(例如点线边框和虚线框),元素的背景应该出现在边框的可见部分之间.</p>
+<h4 id="边框样式"><a href="#边框样式" class="headerlink" title="边框样式"></a>边框样式</h4><p>为一个边框定义多个样式，例如:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.aside</span> &#123;<span class="attribute">border-style</span>: solid dotted dashed double;&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这条规则为类名为 aside 的段落定义了四种边框样式：实线上边框、点线右边框、虚线下边框和一个双线左边框。</p>
+<p>我们又看到了这里的值采用了 top-right-bottom-left 的顺序，讨论用多个值设置不同内边距时也见过这个顺序。</p>
+<h5 id="定义单边样式"><a href="#定义单边样式" class="headerlink" title="定义单边样式"></a>定义单边样式</h5><p>为某一个边设置边框样式,而不是设置所有4个边的边框样式,可以使用下面的单边框样式属性:</p>
+<ul>
+<li>border-top-style</li>
+<li>border-right-style</li>
+<li>border-bottom-style</li>
+<li>border-left-style</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: solid; <span class="attribute">border-left-style</span>: none;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="边框的宽度"><a href="#边框的宽度" class="headerlink" title="边框的宽度"></a>边框的宽度</h4><p>通过border-width属性为边框指定宽度.</p>
+<p>为边框指定宽度有两种方法:</p>
+<ul>
+<li><p>直接使用长度单位指定: 2px或0.1em;</p>
+</li>
+<li><p>使用关键字 thin、medium(默认值)和thick.</p>
+</li>
+</ul>
+<p><strong>定义单边宽度</strong></p>
+<ul>
+<li><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: solid; <span class="attribute">border-width</span>: <span class="number">15px</span> <span class="number">5px</span> <span class="number">15px</span> <span class="number">5px</span>;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-top-width</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-right-width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border-bottom-width</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-left-width</span>: <span class="number">5px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>没有边框</strong></p>
+<p>默认情况下border-style是none，也就是没有边框，如下的定义，将不会显示边框:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">border-style</span>: none; <span class="attribute">border-width</span>: <span class="number">50px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果border-style设置为none，即边框根本不存在，那么边框就不可能有宽度，因此边框宽度自动设置为0，而不论您原先定义的是什么。</p>
+<p><strong>由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none. 因此，如果您希望边框出现，就必须声明一个边框样式.</strong></p>
+<h4 id="边框的颜色"><a href="#边框的颜色" class="headerlink" title="边框的颜色"></a>边框的颜色</h4><p>设置边框颜色非常简单. CSS使用一个简单的border-color属性, 它一次可以接受最多四个颜色值.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-color</span>: blue <span class="built_in">rgb</span>(25%,35%,45%) <span class="number">#909090</span> red;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="透明边框"><a href="#透明边框" class="headerlink" title="透明边框"></a>透明边框</h4><p>有些时候希望创建一个不可见的边框.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: transparent;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">border-color</span>: gray;&#125;</span><br></pre></td></tr></table></figure>
+<p>这种透明边框相当于内边距，因为元素的背景会延伸到边框区域（如果有可见背景的话）.</p>
+<h3 id="CSS外边距"><a href="#CSS外边距" class="headerlink" title="CSS外边距"></a>CSS外边距</h3><p> 设置外边距的最简单的方法就是使用margin属性</p>
+<p>margin属性接受任何长度单位, 可以是像素、英寸、毫米或em.</p>
+<p><strong>外边距的合并问题</strong></p>
+<p>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距. 合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者.</p>
+<p><em>注意:</em>只有普通文档流中块框的垂直外边距才会发生外边距合并. 行内框、浮动框或绝对定位之间的外边距不会合并.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/30/CSS语法学习 一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -362,12 +570,12 @@
 </blockquote>
 <p>所以完整的层叠优先级如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浏览器缺省&lt;外部样式表&lt;外部样式表类选择器&lt;外部样式表类派生选择器&lt;外部样式表ID选择器&lt;外部样式表ID派生选择器&lt;内部样式表&lt;内部样式表类选择器&lt;内部样式表类派生选择器&lt;内部样式表ID选择器&lt;内部样式表ID派生选择器&lt;内联样式表</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span> /*避免中文乱码*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">            div &#123; color:#00FF00;&#125; /*绿色*/</span></span><br><span class="line"><span class="undefined">            .a1 &#123;color:#0000FF;&#125; /*蓝色*/</span></span><br><span class="line"><span class="undefined">            .a1 div &#123;color:#00FFFF&#125; /*青色*/</span></span><br><span class="line"><span class="undefined">            .a2 &#123;color:#FF0000;&#125; /*红色*/</span></span><br><span class="line"><span class="undefined">            #a2 &#123;color:#FFFF00;&#125; /*黄色*/</span></span><br><span class="line"><span class="undefined">            #a2 div &#123;color:#FF00FF;&#125;/*紫色*/</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            我是绿色，内部样式选择器由于浏览器缺省</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">             我是红色，类选择器优于内部样式表</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span> <span class="attr">id</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">            我是黄色,ID选择器优于类选择器</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是蓝色,类选择器优于内部样式表<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                 我是青色，类派生选择器优于类选择器</span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">                 我还是青色，类派生选择器优于类选择器</span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是黄色，ID选择器优于类派生选择器<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                     我是紫色，ID派生选择器优于类选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">                     我还是紫色，ID派生选择器优于类派生选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span> <span class="attr">id</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">                     我还是紫色, ID派生选择器优于所有ID选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span> <span class="attr">id</span>=<span class="string">"a1"</span> <span class="attr">style</span>=<span class="string">"color:#000000;"</span>&gt;</span></span><br><span class="line">                     我是黑色，我是内联样式，其他样式失效!</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span> /*避免中文乱码*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-tag">div</span> &#123; <span class="attribute">color</span>:<span class="number">#00FF00</span>;&#125; <span class="comment">/*绿色*/</span></span></span><br><span class="line"><span class="css">            <span class="selector-class">.a1</span> &#123;<span class="attribute">color</span>:<span class="number">#0000FF</span>;&#125; <span class="comment">/*蓝色*/</span></span></span><br><span class="line"><span class="css">            <span class="selector-class">.a1</span> <span class="selector-tag">div</span> &#123;<span class="attribute">color</span>:<span class="number">#00FFFF</span>&#125; <span class="comment">/*青色*/</span></span></span><br><span class="line"><span class="css">            <span class="selector-class">.a2</span> &#123;<span class="attribute">color</span>:<span class="number">#FF0000</span>;&#125; <span class="comment">/*红色*/</span></span></span><br><span class="line"><span class="css">            <span class="selector-id">#a2</span> &#123;<span class="attribute">color</span>:<span class="number">#FFFF00</span>;&#125; <span class="comment">/*黄色*/</span></span></span><br><span class="line"><span class="css">            <span class="selector-id">#a2</span> <span class="selector-tag">div</span> &#123;<span class="attribute">color</span>:<span class="number">#FF00FF</span>;&#125;<span class="comment">/*紫色*/</span></span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            我是绿色，内部样式选择器由于浏览器缺省</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">             我是红色，类选择器优于内部样式表</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span> <span class="attr">id</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">            我是黄色,ID选择器优于类选择器</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是蓝色,类选择器优于内部样式表<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                 我是青色，类派生选择器优于类选择器</span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">                 我还是青色，类派生选择器优于类选择器</span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是黄色，ID选择器优于类派生选择器<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                     我是紫色，ID派生选择器优于类选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">                     我还是紫色，ID派生选择器优于类派生选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span> <span class="attr">id</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line">                     我还是紫色, ID派生选择器优于所有ID选择器</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a1"</span> <span class="attr">id</span>=<span class="string">"a1"</span> <span class="attr">style</span>=<span class="string">"color:#000000;"</span>&gt;</span></span><br><span class="line">                     我是黑色，我是内联样式，其他样式失效!</span><br><span class="line">                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>如果并没有上面的差异，比方说是一个元素有多个类，它的样式有多个.这时候哪个样式生效呢?</strong></p>
 <blockquote>
 <p>一个元素同时对应多个class，<strong>后定义的优先(即近者优先),加上!important者优先</strong></p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">           .a2&#123;font-size:18pt; color: #0000FF!important;&#125;</span></span><br><span class="line"><span class="undefined">           .a1&#123;font-size:9pt; color:#FF0000&#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span>a1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span>a2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a2 a1"</span>&gt;</span>a2 a1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a1 a2"</span>&gt;</span>a1 a2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">           <span class="selector-class">.a2</span>&#123;<span class="attribute">font-size</span>:<span class="number">18pt</span>; <span class="attribute">color</span>: <span class="number">#0000FF</span><span class="meta">!important</span>;&#125;</span></span><br><span class="line"><span class="css">           <span class="selector-class">.a1</span>&#123;<span class="attribute">font-size</span>:<span class="number">9pt</span>; <span class="attribute">color</span>:<span class="number">#FF0000</span>&#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span>a1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span>a2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a2 a1"</span>&gt;</span>a2 a1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"a1 a2"</span>&gt;</span>a1 a2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="伪类与伪元素"><a href="#伪类与伪元素" class="headerlink" title="伪类与伪元素"></a>伪类与伪元素</h2><p><strong>CSS伪类用于向某些选择器添加特殊效果</strong></p>
 <p>语法:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector : pseudo-class &#123;property: value&#125;</span><br></pre></td></tr></table></figure>
@@ -695,7 +903,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
