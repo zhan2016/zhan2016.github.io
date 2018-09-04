@@ -101,13 +101,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="CSS框模型[TOC] 概述CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式. 框模型图示:  元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素. 注意:定义的背景声明将被应用于边框以内的区域，即内边距和内容组成的区域. 内边距、边框和外边">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="f:/mydesktop/ct_boxmodel.gif">
-<meta property="og:image" content="f:/mydesktop/ct_css_boxmodel_example.gif">
-<meta property="og:updated_time" content="2018-09-04T08:21:17.219Z">
+<meta property="og:image" content="https://res.cloudinary.com/zhandataset/image/upload/v1536050155/blogImage/ct_boxmodel.gif">
+<meta property="og:image" content="https://res.cloudinary.com/zhandataset/image/upload/v1536050153/blogImage/ct_css_boxmodel_example.gif">
+<meta property="og:updated_time" content="2018-09-04T08:40:27.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS学习二---CSS框模型">
 <meta name="twitter:description" content="CSS框模型[TOC] 概述CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式. 框模型图示:  元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素. 注意:定义的背景声明将被应用于边框以内的区域，即内边距和内容组成的区域. 内边距、边框和外边">
-<meta name="twitter:image" content="f:/mydesktop/ct_boxmodel.gif">
+<meta name="twitter:image" content="https://res.cloudinary.com/zhandataset/image/upload/v1536050155/blogImage/ct_boxmodel.gif">
 
 
 
@@ -335,13 +335,13 @@
         <h1 id="CSS框模型"><a href="#CSS框模型" class="headerlink" title="CSS框模型"></a>CSS框模型</h1><p>[TOC]</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框和外边距的方式.</p>
 <p>框模型图示:</p>
-<p><img src="F:\mydesktop\ct_boxmodel.gif" alt="ct_boxmodel"></p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536050155/blogImage/ct_boxmodel.gif" alt="ct_boxmodel"></p>
 <p>元素的最内部分是实际的内容, 直接包围内容的是内边距. 内边距呈现了元素的背景. 内边距的边缘是边框. 内边距以外是外边距，外边距默认是透明的，因此不会遮挡其他的任何元素.</p>
 <p><em>注意</em>:定义的背景声明将被应用于边框以内的区域，即内边距和内容组成的区域.</p>
 <p>内边距、边框和外边距都是可选的，默认值是零.</p>
 <p>在CSS中，<strong>width和height指的是内容区域的宽度和高度</strong>.  增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸.</p>
 <p>假设框的每个边上有是个元素的外边距和5个元素的内边距. 如果希望这个元素框达到100个像素，就需要将内容的宽度设置为70像素，图示如下:</p>
-<p><img src="F:\mydesktop\ct_css_boxmodel_example.gif" alt="ct_css_boxmodel_example"></p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536050153/blogImage/ct_css_boxmodel_example.gif" alt="ct_css_boxmodel_example"></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><em>注意:</em>内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边.</p>
 <p><em>注意</em>:外边距可以是负值，而且很多情况下都要使用负值的外边距.</p>
