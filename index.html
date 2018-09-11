@@ -260,6 +260,228 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/CSS定位(positioning)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/04/CSS定位(positioning)/" itemprop="url">CSS学习三--定位</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T16:56:35+08:00">
+                2018-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CSS定位-positioning"><a href="#CSS定位-positioning" class="headerlink" title="CSS定位(positioning)"></a>CSS定位(positioning)</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSS定位属性(Positioning)属性允许你对元素进行定位.</p>
+<p>定位的基本思想很简单，它允许定义元素框相对于其正常位置应该出现的位置, 或者相对于父元素、另一个元素甚至浏览器窗口本身的位置.</p>
+<h2 id="一切皆为框"><a href="#一切皆为框" class="headerlink" title="一切皆为框"></a>一切皆为框</h2><p>div、h1或p元素常常被称为块级元素. 这意味着这些元素显示为一块内容，即“块框”. 与之相反, span和strong等元素成为”行内元素”, 这是因为它们的内容显示在行中, 即”行内框”.</p>
+<p>可以使用display属性改变生成的框的类型. 这意味着，通过将display属性设置为block, 可以让行内元素(比如a元素)表现的像块级元素一样.还可以通过把display设置为none,让生成的元素根本没有框. 这样的话, 该框及其所有内容就不再显示, 不占用文档中的内容.</p>
+<p>但是在一种情况下，即使没有进行显示定义，也会创建块级元素. 这种情况发生在把一些文本添加到一个块级元素(div)的开头. 即使没有把这些文本定义为段落，它也会被当做段落对待:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line"> <span class="selector-tag">some</span> <span class="selector-tag">text</span></span><br><span class="line"> &lt;p&gt;some more text.&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在这种情况下, 这个框成为无名块框, 因为它不与专门的元素相关联.</p>
+<h2 id="CSS定位机制"><a href="#CSS定位机制" class="headerlink" title="CSS定位机制"></a>CSS定位机制</h2><p>CSS有三种基本定位机制:</p>
+<ul>
+<li>普通流</li>
+<li>浮动</li>
+<li>绝对定位</li>
+</ul>
+<p>除非专门指定，否则所有框都在普通流中定位. 也就是说，普通流中的元素的位置由元素在(X)HTML中的位置决定.</p>
+<p><strong>块级框从上到下一个接一个的排列, 框之间的垂直距离是由框的垂直外边距计算出来.</strong></p>
+<p>行内框在一行中<strong>水平布置</strong>. 可以使用水平内边距、边框和外边距调整它们的间距. 但是, 垂直内边距、边框和外边距<strong>不影响</strong>行内框的高度. 由一行形成的水平框成为<strong>行框(Line Box)</strong>, 行框的高度总是足以容纳它包含的所有行内框.  不过，设置行高可以增加这个框的高度.</p>
+<h3 id="CSS-position属性"><a href="#CSS-position属性" class="headerlink" title="CSS position属性"></a>CSS position属性</h3><p>通过使用position属性，我们可以选择4种不同类型的定位，这会影响元素框生成的方式.</p>
+<p>position属性值的含义:</p>
+<ul>
+<li><p>static</p>
+<p>元素框正常生成. 块级元素生成一个矩形框，作为文档流的一部分, 行内元素则会创建一个或多个行框，置于其父元素中.</p>
+</li>
+<li><p>relative</p>
+<p>元素框偏移某个距离. 元素仍保持其未定位前的形状， 它原本所占的空间仍保留.</p>
+</li>
+<li><p>absolute</p>
+<p>元素框从文档流完全删除，并相对于其包含块定位. 包含块可能是文档中的另一个元素或者是初始包含块.元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样. 元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框.</p>
+</li>
+<li><p>fixed</p>
+<p>元素框的表现类似于将position设置为absolute，<strong>不过其包含块是视窗本身.</strong></p>
+<p><em>提示:</em> 相对定位实际上被看作普通流定位模型的一部分, 因为元素的位置相对于它在普通流中的位置.</p>
+</li>
+</ul>
+<p>CSS定位属性:</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>把元素放置到一个静态的、相对的、绝对的、或固定的位置中</td>
+</tr>
+<tr>
+<td>top</td>
+<td>定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移</td>
+</tr>
+<tr>
+<td>right</td>
+<td>定义了定位元素右外边距边界与其包含块右边界之间的偏移</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>定义了定位元素下外边距边界与其包含块下边界之间的偏移</td>
+</tr>
+<tr>
+<td>left</td>
+<td>定义了定位元素左外边距边界与其包含块左边界之间的偏移</td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>设置了当元素的内容溢出其区域时发生的事</td>
+</tr>
+<tr>
+<td>clip</td>
+<td>设置元素的形状. 元素被剪入这个形状之中, 然后显示出来.</td>
+</tr>
+<tr>
+<td>vertical-align</td>
+<td>设置元素的垂直对齐方式.</td>
+</tr>
+<tr>
+<td>z-index</td>
+<td>设置元素的堆叠顺序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CSS相对定位"><a href="#CSS相对定位" class="headerlink" title="CSS相对定位"></a>CSS相对定位</h3><p>设置为相对定位的元素框会偏移某个距离. <strong>元素仍然保持其未定位前的形状</strong>, 它原本所占的空间仍保留.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box_relative</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示意图:</p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536312404/blogImage/ct_css_positioning_relative_example.gif" alt="css图片"></p>
+<p><strong>注意</strong>,  在使用相对定位时, 无论是否进行移动, 元素仍然占据原来的空间. 因此, 移动元素会导致它覆盖其他框.</p>
+<h3 id="CSS绝对定位"><a href="#CSS绝对定位" class="headerlink" title="CSS绝对定位"></a>CSS绝对定位</h3><p>设置为绝对定位的元素框会从文档流完全删除, 并相对于其包含块定位，包含块可能是文档的另一个元素或者是初始包含块. 元素原先在正常文档流中所占的空间会关闭, 就好像该元素原来不存在一样. 元素定位后生成一个块级框, 而不论原来它在正常流中生成何种类型的框.</p>
+<p>绝对定位使元素的位置与文档流无关， 因此不占据空间. 这一点与相对定位不同, 相对定位实际上被看作普通流定位模型的一部分，因为元素的位置相对于它在普通流中的位置.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box_relative</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如图所示:</p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536313679/ct_css_positioning_absolute_example.gif" alt="absolute"></p>
+<p>绝对定位的元素的位置相对于<strong>最近的已定位祖先元素</strong>,如果元素没有已定位的祖先元素, 那么它的位置相对于<strong>最初的包含块</strong>.</p>
+<p><strong>复习一下:</strong> 相对定位是”相对于”元素在文档中的初始位置,  而绝对定位是”相对于”最近的已定位祖先元素, 如果不存在y已定位的祖先元素, 那么”相对于”最初的包含块.</p>
+<p><strong>注意！</strong> 因为绝对定位的框与文档流无关, 所以它们可以覆盖页面上的其他元素. 可以通过设置z-index来控制这些框的堆放层次.</p>
+<h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><p><strong>浮动的框可以向左或向右移动, 直到<em>它的外边缘碰到包含框或另一个浮动的边框</em>为止.</strong></p>
+<p>由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样.</p>
+<p><strong>CSS浮动</strong></p>
+<p>请看下图, 当把框1向右浮动时, 它脱离文档流并且向右移动，直到它右边缘碰到包含款的右边缘.</p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536646985/ct_css_positioning_floating_right_example.gif" alt="right"></p>
+<p>再看下图, 当框1向左浮动时, 他脱离文档流并且向左移动,  直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空间，实际上覆盖住了框2，使框2从视图中消失.</p>
+<p>如果把所有三个框都向左移动， 那么框1向左浮动直到碰到包含框, 另外两个框向左浮动直到碰到第一个浮动框.</p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536647282/ct_css_positioning_floating_left_example.gif" alt="left"></p>
+<p>如下图所示，如果包含框太窄,  无法容纳水平排列的三个浮动元素， 那么其他浮动块向下移动, 直到有足够的空间. 如果浮动元素的高度不同, 那么当它们向下移动时可能被其他浮动元素”卡住”:</p>
+<p><img src="https://res.cloudinary.com/zhandataset/image/upload/v1536647576/ct_css_positioning_floating_left_example_2.gif" alt="left2"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/CSS框模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -900,7 +1122,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
